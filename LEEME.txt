@@ -1,0 +1,6 @@
+Descomprime el ZIP y sube su contenido a la raíz del repositorio _Gluplandia. Reemplaza los archivos existentes y conserva todos los archivos de la carpeta assets.
+El archivo CNAME conserva tu dominio gluplandia.com.
+Espera a que GitHub Pages termine la publicación y recarga la página.
+La lista empieza por Time to Pretend de MGMT. Después reproduce Mice on Venus, Wet Hands y Haggstrom. Al terminar vuelve a la primera canción. Se incluyen los audios exactos que compartiste.
+Puedes elegir canciones desde el botón de lista o utilizar los botones anterior y siguiente. El volumen inicial es 30%.
+El navegador puede requerir pulsar reproducir o interactuar con la página antes de permitir el audio automático. Una pausa manual se respeta hasta volver a pulsar reproducir o elegir una canción.
