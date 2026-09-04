@@ -1,6 +1,0 @@
-Descomprime el ZIP y abre index.html para ver la landing.
-Para publicarla, sube index.html, style.css, app.js y la carpeta assets completa a tu alojamiento web.
-La música comienza automáticamente cuando el navegador lo permite. Si no, pulsa reproducir o interactúa con la página.
-La copia automática de la IP funciona en sitios HTTPS.
-Las fuentes de Google requieren conexión a Internet.
-El puerto de Bedrock está pendiente de confirmación.
