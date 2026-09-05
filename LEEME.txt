@@ -31,3 +31,15 @@ Las etiquetas Open Graph están en el HTML inicial y apuntan a la miniatura púb
 El favicon se define con link rel=icon según https://developer.mozilla.org/en-US/docs/Glossary/Favicon y la miniatura con Open Graph según https://developers.facebook.com/documentation/sharing/webmasters/images . No hace falta instalar ningún plugin en Minecraft para estos cambios.
 
 En móviles, el reproductor inicia compacto. El botón de ampliar muestra los controles de volumen y cambio de canción. Se ajustaron áreas táctiles, anchos de tarjetas, imágenes y espacios para pantallas pequeñas. La página sigue conservando el diseño de escritorio. Se comprobaron la sintaxis y los recursos locales y la lógica del control móvil. No se ha comprobado la vista previa real en una conversación de WhatsApp.
+
+Actualización de la miniatura, la dragona y las reliquias.
+
+La miniatura vigente usa el mosaico adjuntado por ti. Su URL es https://gluplandia.com/assets/gluplandia-share-v2.jpg . Se utiliza JPEG de 1200 por 675 píxeles y una URL nueva. Las instrucciones anteriores que apuntaban a og.png quedan sustituidas por esta dirección. La imagen antigua se conserva para enlaces que aún la soliciten.
+
+Después de publicar, abre la dirección de la nueva imagen en el navegador y confirma que se carga. Luego pega https://gluplandia.com en un mensaje nuevo de WhatsApp y espera a que aparezca la vista previa antes de enviarlo. La página declara la imagen, pero WhatsApp controla su descarga, caché y presentación. No se garantiza que mensajes ya enviados se actualicen. Desde el entorno de revisión, el dominio devolvió HTTP 403. No se ha confirmado que ese bloqueo afecte también a WhatsApp ni se ha probado una vista previa real en el chat.
+
+El minijuego Las reliquias del umbral funciona únicamente en la web. No guarda datos personales ni entrega premios en Minecraft. Permite jugar con pantalla táctil o teclado. Los efectos de los botones y del juego comparten el control de volumen y el interruptor de efectos, también accesible dentro de la lista musical.
+
+Se validaron los recursos y las etiquetas, la sintaxis de JavaScript y las transiciones del minijuego. Las pruebas cubren el inicio, los toques repetidos, las parejas incorrectas, el reinicio durante una espera, la victoria y volver a jugar. No se realizó una revisión visual de la página completa en un navegador.
+
+Las nuevas imágenes de muestra proceden de la galería oficial de sus creadores en https://modrinth.com/datapack/dungeons-and-taverns/gallery . Se presentan como referencias y no como capturas del servidor. No se revelan nombres de paquetes en los textos de la landing. Las imágenes conservan sus marcas de origen.

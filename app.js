@@ -108,7 +108,7 @@ playMusic();
 
 let timer;function notify(message){const t=document.getElementById('toast');t.textContent=message;t.classList.add('show');clearTimeout(timer);timer=setTimeout(()=>t.classList.remove('show'),4000)}document.querySelectorAll('.copy').forEach(b=>b.addEventListener('click',async()=>{try{await navigator.clipboard.writeText('play.gluplandia.com');notify('Dirección copiada. Nos vemos en Gluplandia.')}catch{notify('Copia esta dirección para jugar. play.gluplandia.com')}}));const menu=document.getElementById('menu'),nav=document.querySelector('nav');menu.addEventListener('click',()=>{const open=nav.classList.toggle('open');menu.setAttribute('aria-expanded',open);menu.setAttribute('aria-label',open?'Cerrar menú':'Abrir menú')});nav.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{nav.classList.remove('open');menu.setAttribute('aria-expanded','false')}));if(!matchMedia('(prefers-reduced-motion: reduce)').matches){const e=document.querySelector('.embers');for(let n=0;n<24;n++){const p=document.createElement('i');p.style.left=Math.random()*100+'%';p.style.top=60+Math.random()*40+'%';p.style.animationDelay=Math.random()*-12+'s';p.style.animationDuration=8+Math.random()*8+'s';e.appendChild(p)}}
 
-let soundContext;document.querySelectorAll('.copy').forEach(button=>button.addEventListener('click',()=>{if(audio.paused||audio.volume===0)return;try{soundContext??=new (window.AudioContext||window.webkitAudioContext)();const now=soundContext.currentTime;[523.25,783.99].forEach((frequency,index)=>{const tone=soundContext.createOscillator(),gain=soundContext.createGain();tone.type='sine';tone.frequency.value=frequency;gain.gain.setValueAtTime(0,now+index*.08);gain.gain.linearRampToValueAtTime(audio.volume*.09,now+index*.08+.015);gain.gain.exponentialRampToValueAtTime(.001,now+index*.08+.3);tone.connect(gain);gain.connect(soundContext.destination);tone.start(now+index*.08);tone.stop(now+index*.08+.32)})}catch{}}));
+let soundContext;
 
 const skins = {arcane:{label:'Amatista',text:'Un brillo violeta sobre el filo.'},ember:{label:'Ascua',text:'Un resplandor cálido que recuerda a las brasas.'},frost:{label:'Escarcha',text:'Una luz fría para una expedición desconocida.'}};
 document.querySelectorAll('[data-skin]').forEach(button => {
@@ -315,7 +315,7 @@ function playExperienceSound(leveled) {
 document.getElementById('sfx-toggle').addEventListener('click', event => {
  effectsEnabled = !effectsEnabled;
  event.currentTarget.setAttribute('aria-pressed', String(effectsEnabled));
- event.currentTarget.textContent = effectsEnabled ? 'Sonidos de experiencia activados' : 'Sonidos de experiencia silenciados';
+ event.currentTarget.textContent = effectsEnabled ? 'Efectos de la web activados' : 'Efectos de la web silenciados';
  if (!effectsEnabled) {orbSound.pause();levelSound.pause();}
 });
 let burstTimer;
@@ -365,3 +365,76 @@ document.addEventListener('keydown', event => {
   nav.classList.remove('open');menu.setAttribute('aria-expanded','false');menu.setAttribute('aria-label','Abrir menú');menu.focus();
  }
 });
+
+// Shared effects control for gameplay and ordinary buttons.
+const globalEffects = document.getElementById('global-sfx-toggle');
+function syncEffectsControls(){globalEffects.setAttribute('aria-pressed',String(effectsEnabled));globalEffects.textContent=effectsEnabled?'Efectos de la web activados':'Efectos de la web silenciados';}
+globalEffects.addEventListener('click',()=>{document.getElementById('sfx-toggle').click();syncEffectsControls();});
+document.getElementById('sfx-toggle').addEventListener('click',syncEffectsControls);
+function interfaceTone(low=false){
+ if(!effectsEnabled||Number(effectsVolume.value)===0)return;
+ try{
+  soundContext??=new (window.AudioContext||window.webkitAudioContext)();
+  if(soundContext.state==='suspended')soundContext.resume().catch(()=>{});
+  const t=soundContext.currentTime,o=soundContext.createOscillator(),g=soundContext.createGain();
+  o.type='sine';o.frequency.setValueAtTime(low?145:660,t);o.frequency.exponentialRampToValueAtTime(low?65:440,t+.13);
+  g.gain.setValueAtTime(.055*Number(effectsVolume.value)/100,t);g.gain.exponentialRampToValueAtTime(.001,t+.16);
+  o.connect(g);g.connect(soundContext.destination);o.start(t);o.stop(t+.18);
+ }catch{}
+}
+document.addEventListener('click',event=>{
+ const button=event.target.closest?.('button');
+ if(!button||button.closest('.memory-board')||button.matches('#practice-skill,#sfx-toggle,#global-sfx-toggle,#dragon-react'))return;
+ interfaceTone();
+});
+const dragonLines=['Dos ojos violetas se vuelven hacia ti.','El aire vibra bajo sus alas.','El vacío devuelve un rugido. Prepara tu siguiente paso.'];
+let dragonIndex=0,dragonTimer;
+document.getElementById('dragon-react').addEventListener('click',()=>{
+ document.getElementById('dragon-message').textContent=dragonLines[dragonIndex++%dragonLines.length];
+ const stage=document.querySelector('.dragon-section');stage.classList.remove('dragon-awake');void stage.offsetWidth;stage.classList.add('dragon-awake');
+ clearTimeout(dragonTimer);dragonTimer=setTimeout(()=>stage.classList.remove('dragon-awake'),900);interfaceTone(true);
+});
+const relics=[{name:'Espada',src:'assets/enchanted-sword.png'},{name:'Cofre',src:'assets/recovery-chest.png'},{name:'Cristal',src:'assets/end-crystal.png'}];
+const memoryBoard=document.getElementById('memory-board');
+let memoryCards=[],memoryOpen=[],memoryLocked=false,memoryStarted=false,memoryMoves=0,memoryPairs=0,memoryTimer;
+function makeMemoryBoard(started){
+ clearTimeout(memoryTimer);memoryOpen=[];memoryLocked=false;memoryStarted=started;memoryMoves=0;memoryPairs=0;
+ let deck=[0,0,1,1,2,2];for(let i=deck.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[deck[i],deck[j]]=[deck[j],deck[i]];}
+ memoryBoard.replaceChildren();
+ memoryCards=deck.map((kind,index)=>{
+  const b=document.createElement('button');b.type='button';b.className='memory-card';b.disabled=!started;
+  b.setAttribute('aria-label','Reliquia oculta '+(index+1));b.setAttribute('aria-pressed','false');
+  const img=document.createElement('img');img.src=relics[kind].src;img.alt='';img.width=200;img.height=200;
+  const cover=document.createElement('span');cover.textContent='G';cover.className='relic-cover';cover.setAttribute('aria-hidden','true');
+  b.append(img,cover);b.addEventListener('click',()=>flipRelic(index));memoryBoard.appendChild(b);return {button:b,kind,matched:false};
+ });
+ document.getElementById('memory-pairs').textContent='0 / 3';document.getElementById('memory-moves').textContent='0';
+}
+function flipRelic(index){
+ const card=memoryCards[index];if(!memoryStarted||memoryLocked||card.matched||memoryOpen.includes(index))return;
+ card.button.classList.add('revealed');card.button.setAttribute('aria-pressed','true');card.button.setAttribute('aria-label',relics[card.kind].name+' en la casilla '+(index+1));memoryOpen.push(index);interfaceTone();
+ if(memoryOpen.length<2){document.getElementById('memory-status').textContent=relics[card.kind].name+' descubierta. Elige otra reliquia.';return;}
+ memoryMoves++;document.getElementById('memory-moves').textContent=String(memoryMoves);
+ const [a,b]=memoryOpen.map(i=>memoryCards[i]);
+ if(a.kind===b.kind){
+  for(const c of [a,b]){c.matched=true;c.button.classList.add('matched');c.button.setAttribute('aria-label',relics[c.kind].name+'. Pareja encontrada.');}
+  memoryPairs++;memoryOpen=[];document.getElementById('memory-pairs').textContent=memoryPairs+' / 3';playExperienceSound(memoryPairs===3);
+  document.getElementById('memory-status').textContent=memoryPairs===3?'Has reunido las tres parejas en '+memoryMoves+' intentos. El umbral reconoce tu memoria.':'Pareja encontrada. Quedan '+(3-memoryPairs)+'.';
+  if(memoryPairs===3){memoryStarted=false;document.getElementById('memory-start').textContent='Jugar otra vez';}
+ }else{
+  memoryLocked=true;document.getElementById('memory-status').textContent='Son distintas. Recuerda sus lugares.';
+  memoryTimer=setTimeout(()=>{memoryOpen.forEach(i=>{const c=memoryCards[i];c.button.classList.remove('revealed');c.button.setAttribute('aria-pressed','false');c.button.setAttribute('aria-label','Reliquia oculta '+(i+1));});memoryOpen=[];memoryLocked=false;document.getElementById('memory-status').textContent='Prueba otra pareja.';},1200);
+ }
+}
+document.getElementById('memory-start').addEventListener('click',()=>{makeMemoryBoard(true);document.getElementById('memory-start').textContent='Reiniciar reto';document.getElementById('memory-status').textContent='Elige dos reliquias. Encuentra las tres parejas.';memoryCards[0].button.focus();});
+makeMemoryBoard(false);
+const sampleScenes=[
+ {src:'assets/sample-end.jpg',title:'Un castillo sobre el vacío.',text:'Las fortalezas del End esconden nuevas rutas de exploración entre sus salas.',alt:'Castillo de referencia en el End'},
+ {src:'assets/sample-jungle.jpg',title:'La jungla no lo ha ocultado todo.',text:'Entre la vegetación aparecen ruinas más extensas que un pequeño templo. Conviene mirar antes de entrar.',alt:'Ruinas de referencia rodeadas de jungla'},
+ {src:'assets/sample-tavern.jpg',title:'Una luz junto al camino.',text:'Las tabernas ofrecen camas y encuentros con comerciantes que pueden orientarte hacia otra expedición.',alt:'Taberna de referencia en el paisaje'}
+];
+document.querySelectorAll('[data-sample]').forEach(b=>b.addEventListener('click',()=>{
+ const scene=sampleScenes[Number(b.dataset.sample)];const img=document.getElementById('sample-image');img.src=scene.src;img.alt=scene.alt;
+ document.getElementById('sample-title').textContent=scene.title;document.getElementById('sample-description').textContent=scene.text;
+ document.querySelectorAll('[data-sample]').forEach(btn=>btn.setAttribute('aria-pressed',String(btn===b)));
+}));
