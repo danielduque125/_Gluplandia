@@ -429,7 +429,7 @@ function flipRelic(index){
 document.getElementById('memory-start').addEventListener('click',()=>{makeMemoryBoard(true);document.getElementById('memory-start').textContent='Reiniciar reto';document.getElementById('memory-status').textContent='Elige dos reliquias. Encuentra las tres parejas.';memoryCards[0].button.focus();});
 makeMemoryBoard(false);
 const sampleScenes=[
- {src:'assets/sample-wither-keep.jpg',title:'Wither Keep: El bastión en la cumbre.',text:'Una imponente fortaleza del datapack ATi Structures que vigila las llanuras. Sus murallas y salas interiores ocultan desafíos, trampas y botín de alto calibre.',alt:'Fortaleza Wither Keep de ATi Structures'},
+ {src:'assets/sample-wither-keep.jpg',title:'Wither Keep: El bastión en la cumbre.',text:'Una imponente fortaleza que vigila las llanuras. Sus murallas y salas interiores ocultan desafíos, trampas y botín de alto calibre.',alt:'Fortaleza Wither Keep'},
  {src:'assets/sample-dungeon-plains.jpg',title:'Dungeon Plains: El laberinto bajo tierra.',text:'Pasadizos y criptas subterráneas. Pasillos en penumbra custodiados por enemigos y tesoros sellados.',alt:'Galería subterránea de Dungeon Plains'},
  {src:'assets/sample-cascada-lava.jpg',title:'Cascada de Lava: El santuario de magma.',text:'Cámaras ancestrales talladas en piedra profunda. Una columna vertical de lava ilumina la cúpula resguardando secretos de expediciones pasadas.',alt:'Cámara con cascada de lava'}
 ];
