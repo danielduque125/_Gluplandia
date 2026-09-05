@@ -1,0 +1,13 @@
+Gluplandia Dungeons.
+
+Descomprime y sube todo el contenido a la raíz publicada por GitHub Pages. Conserva CNAME y la carpeta assets completa. Espera a que termine la publicación.
+
+La miniatura activa es https://gluplandia.com/assets/gluplandia-share-square-v3.jpg y mide 600 por 600 píxeles. Las ocho etiquetas Open Graph solicitadas están en el head inicial, sin JavaScript. El título es Gluplandia Dungeons y la URL canónica es https://gluplandia.com/ . El tipo real de la imagen es image/jpeg. Las imágenes anteriores se conservan para enlaces antiguos.
+
+Abre la dirección de la imagen después de publicar y confirma que carga. Luego pega el enlace del sitio en un mensaje nuevo de WhatsApp y espera su vista previa antes de enviarlo. La aplicación controla la presentación y la caché. La tarjeta no ejecuta las interacciones del sitio dentro del chat. No se ha verificado su presentación en un chat real.
+
+El minijuego y los niveles son demostraciones locales de la web. No modifican cuentas ni entregan premios en Minecraft. Los niveles de mobs requieren un complemento adicional al sistema de habilidades. El servidor debe configurar las funciones anunciadas y las animaciones correspondientes a cada edición.
+
+La música empieza por Time to Pretend e intenta reproducirse al abrir la página. Si el navegador bloquea el audio, se vuelve a intentar con la primera interacción. Los sonidos de botones y experiencia tienen controles de volumen y silencio independientes de la música. El reproductor móvil se amplía con su botón.
+
+Las imágenes de estructuras son referencias de sus creadores y no capturas de Gluplandia. Fuentes consultadas para el contenido en https://wiki.aurelium.dev/auraskills/skills/ y https://modrinth.com/datapack/dungeons-and-taverns/gallery .
