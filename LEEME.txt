@@ -21,3 +21,13 @@ Los sonidos de recoger experiencia y subir de nivel están incluidos localmente 
 El portal es una ilustración original con una secuencia narrativa de tres pistas. La dimensión se anuncia como próxima. La vista de apariencias cambia el tono de la ilustración y no representa un catálogo definitivo de modelos. Debes configurar la dimensión y las skins de armas dentro del juego. Se retiraron los nombres y las descripciones específicas de los encantamientos para reservar su descubrimiento al servidor.
 
 Se verificaron las rutas de recursos, la sintaxis JavaScript y la lógica de las interacciones mediante pruebas locales. No se realizó una comprobación visual en un navegador de esta versión.
+
+Actualización para enlaces compartidos y móviles.
+
+Sube el contenido completo de este ZIP a la raíz publicada por GitHub Pages. Incluye og.png y favicon.ico en la raíz, además de todos los archivos de assets. Conserva el archivo CNAME. Espera a que termine la publicación antes de probar el enlace.
+
+Las etiquetas Open Graph están en el HTML inicial y apuntan a la miniatura pública https://gluplandia.com/og.png?v=1 . El favicon tiene versiones ICO y PNG para pestañas y accesos directos. Ambos cambios necesitan estar publicados para aparecer en el dominio. WhatsApp decide cómo muestra la vista previa y puede conservar resultados anteriores. Pega el enlace en un mensaje nuevo y espera a que aparezca la miniatura antes de enviarlo. Comprueba que no tengas activada la opción de deshabilitar vistas previas de enlaces en WhatsApp. https://faq.whatsapp.com/445453537819972
+
+El favicon se define con link rel=icon según https://developer.mozilla.org/en-US/docs/Glossary/Favicon y la miniatura con Open Graph según https://developers.facebook.com/documentation/sharing/webmasters/images . No hace falta instalar ningún plugin en Minecraft para estos cambios.
+
+En móviles, el reproductor inicia compacto. El botón de ampliar muestra los controles de volumen y cambio de canción. Se ajustaron áreas táctiles, anchos de tarjetas, imágenes y espacios para pantallas pequeñas. La página sigue conservando el diseño de escritorio. Se comprobaron la sintaxis y los recursos locales y la lógica del control móvil. No se ha comprobado la vista previa real en una conversación de WhatsApp.

@@ -352,3 +352,16 @@ document.getElementById('portal-reset').addEventListener('click',()=>{
  document.getElementById('portal-count').textContent='0 / 3 señales investigadas.';
  document.getElementById('portal-message').textContent='Acércate. La luz acaba de cambiar.';
 });
+
+const mobilePlayerToggle = document.getElementById('mobile-player-toggle');
+mobilePlayerToggle.addEventListener('click', () => {
+ const expanded=player.classList.toggle('mobile-expanded');
+ mobilePlayerToggle.setAttribute('aria-expanded',String(expanded));
+ mobilePlayerToggle.setAttribute('aria-label',expanded?'Reducir controles de música':'Ampliar controles de música');
+ mobilePlayerToggle.textContent=expanded?'⌄':'⌃';
+});
+document.addEventListener('keydown', event => {
+ if(event.key==='Escape' && nav.classList.contains('open')){
+  nav.classList.remove('open');menu.setAttribute('aria-expanded','false');menu.setAttribute('aria-label','Abrir menú');menu.focus();
+ }
+});
