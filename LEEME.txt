@@ -1,0 +1,23 @@
+Gluplandia Dungeons
+
+Descomprime este ZIP y sube su contenido a la raíz del repositorio de GitHub, reemplazando los archivos anteriores. Incluye la carpeta assets completa. index.html debe quedar en la raíz publicada por GitHub Pages. Espera a que termine la publicación y recarga la página.
+
+Se conserva el dominio gluplandia.com en CNAME y la dirección del servidor play.gluplandia.com. El puerto de Bedrock sigue pendiente de confirmar.
+
+La lista musical empieza por Time to Pretend. La página intenta reproducirla al abrirse y vuelve a intentarlo con la primera interacción cuando el navegador bloquea el audio automático. Se respeta la pausa elegida por el visitante.
+
+La sección de niveles anuncia una función próxima. El progreso interactivo es una demostración local y sus valores son ilustrativos. No consulta cuentas ni modifica el servidor. Cada habilidad tiene progreso independiente. Los niveles de los mobs requieren un complemento adicional al sistema de habilidades. Consulta https://wiki.aurelium.dev/auramobs/ para esa integración y https://wiki.aurelium.dev/auraskills/skills/ para las habilidades.
+
+La landing presenta animaciones en Java y Bedrock según tu configuración prevista. Debes proporcionar la configuración visual correspondiente a cada edición. Los personajes de la galería son ilustraciones interactivas, no una grabación del juego.
+
+El cofre de recuperación, el antigrief, los encantamientos y los niveles deben configurarse en Minecraft. Estos archivos actualizan la web y no instalan funciones en el servidor. Ajusta las reglas y el contenido a la configuración definitiva.
+
+Actualización de habilidades y misterio.
+
+La demostración ahora incluye las once habilidades de la configuración actual por defecto. La fuente principal es https://wiki.aurelium.dev/auraskills/skills/ y las acciones de experiencia se documentan en https://wiki.aurelium.dev/auraskills/sources . Las mejoras pasivas se explican en https://wiki.aurelium.dev/auraskills/abilities . Los valores de la web continúan siendo ilustrativos.
+
+Los sonidos de recoger experiencia y subir de nivel están incluidos localmente y tienen interruptor y volumen independientes. Proceden de los recursos oficiales de Minecraft Java, sonidos random/orb y random/levelup. Se reproducen al pulsar la actividad de la demostración, sin necesidad de iniciar la música.
+
+El portal es una ilustración original con una secuencia narrativa de tres pistas. La dimensión se anuncia como próxima. La vista de apariencias cambia el tono de la ilustración y no representa un catálogo definitivo de modelos. Debes configurar la dimensión y las skins de armas dentro del juego. Se retiraron los nombres y las descripciones específicas de los encantamientos para reservar su descubrimiento al servidor.
+
+Se verificaron las rutas de recursos, la sintaxis JavaScript y la lógica de las interacciones mediante pruebas locales. No se realizó una comprobación visual en un navegador de esta versión.
