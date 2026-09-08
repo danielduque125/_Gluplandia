@@ -1,0 +1,26 @@
+Arte original creado con generación de imágenes integrada. Los PNG conservan su transparencia. El movimiento se aplica en la web mediante CSS y una reacción al tocar al ayudante; no son secuencias GIF ni animaciones articuladas.
+
+assets/download-quartermaster.png
+Original full-body female voxel explorer with auburn braid, teal coat, purple scarf, brass goggles, stepping with open glowing equipment crate. Cinematic Minecraft-like voxel geometry, warm amber/violet rim light, transparent alpha, no text.
+
+assets/download-courier.png
+Friendly cyan winged voxel spirit carrying wooden chest, expressive square eyes, dynamic flight, cinematic block geometry, transparent alpha, no text.
+
+assets/download-workshop.png
+Wide underground voxel preparation workshop, empty dark center/left, purple portal right, edge lanterns and crates, charcoal/indigo/amber, no characters or text.
+
+Nuevas escenas creadas con generación integrada.
+assets/download-packer.png
+Minecraft poster-like blocky female player with auburn hair teal tunic purple scarf, strongly cuboid limbs and square head, full body kneeling pose placing a glowing cube module into an open wooden crate, friendly face, warm gold and cyan lighting, transparent alpha, no text.
+
+assets/download-fox-friends.png
+Friendly Minecraft blocky leaping fox and tiny cyan allay carrying an emerald, playful poster-quality lighting, genuine transparent alpha, no text.
+
+assets/download-scout.png
+Minecraft poster-style female player with auburn hair teal tunic purple scarf, cuboid limbs, square head, joyful running leap, map in one hand and enchanted pickaxe in the other, transparent background, full body, no text.
+
+Generación integrada adicional.
+assets/download-dungeon-party.png
+Cinematic large-cube Minecraft dungeon with four equipped adventurers entering a vast dark stone arch, gold firelight, mist, dark upper-left for text, central-right group for mobile crop, no text.
+assets/download-supply-golem.png
+Transparent friendly cubic stone golem quartermaster holding a supply crate with turquoise crystals and a map, welcoming gesture, poster lighting, full body, no text.

@@ -1,0 +1,1 @@
+Este ZIP contiene la web completa con todos los cambios. Descomprime y sube su contenido a la raíz del repositorio. index.html y CNAME deben quedar en la raíz, y assets debe conservar su nombre. No necesitas aplicar ningún ZIP anterior. Espera a que termine la publicación de GitHub Pages.

@@ -1,0 +1,29 @@
+Ajuste de color. Los títulos de Descargas usan la misma variable naranja de la landing, #ff941f. Los botones usan exactamente los estilos compartidos de la página principal. Se retiran los efectos dorados del título y del botón de instalación.
+
+Revisión de escenas y navegación. Se añade un fundido de 380 ms entre la landing y Descargas. Los enlaces externos, las anclas y las aperturas en otra pestaña conservan su comportamiento normal. Las poses cambian entre escenas con nuevos PNG originales. El movimiento web se aplica a las ilustraciones mediante CSS; no es animación esquelética de extremidades.
+
+Esta revisión añade arte original en PNG con movimiento CSS, un ayudante que ofrece consejos y un fondo de taller oscuro. Se retoca la apariencia general sin sustituir el contenido. Las animaciones están activadas por defecto; solo se respeta la preferencia de movimiento reducido del sistema. La preferencia local del antiguo botón ya no se utiliza.
+
+La versión parte del repositorio público danielduque125/_Gluplandia, descargado el 8 de septiembre de 2026.
+
+Sube el contenido del ZIP a la raíz de tu repositorio de GitHub Pages. Conserva CNAME y espera a que termine la publicación. La página nueva se abre en descargas.html y está enlazada desde la navegación y desde el final de la landing.
+
+Para publicar el paquete, coloca mods.zip o mods.rar en assets. Edita downloads-config.js y cambia packUrl: null por packUrl: 'assets/mods.zip' o packUrl: 'assets/mods.rar'. También admite una URL HTTPS directa. Al publicar ambos cambios, el botón se habilita automáticamente. El paquete no estaba incluido en el repositorio recibido y no se ha inventado su contenido.
+
+GitHub limita el tamaño de las cargas desde la interfaz web. Si tu paquete supera el límite que muestre GitHub, publícalo como archivo de una Release y usa su enlace de descarga HTTPS en packUrl.
+
+Las instrucciones cubren la extracción del ZIP/RAR y la copia de los .jar a mods, sin crear mods/mods. La carpeta debe corresponder al perfil Fabric 26.2 seleccionado. Las guías de Bedrock están separadas.
+
+motion.js y motion.css añaden apariciones progresivas, barra de avance, cabecera fija sin botón de desactivación. Se respeta la preferencia de movimiento reducido. No se intercepta la rueda del ratón ni se cambia la velocidad del desplazamiento manual.
+
+Se mantienen las imágenes y las funciones del repositorio recibido. No se incorporan cambios de otros ZIP previos que no estuvieran publicados en ese repositorio.
+
+Fuentes de instalación
+https://fabricmc.net/2026/06/15/262.html
+https://fabricmc.net/use/installer/
+https://docs.fabricmc.net/players/installing-fabric/windows
+https://docs.fabricmc.net/players/installing-mods
+https://tlauncher.org/en/how-install-fabric.html
+https://www.minecraft.net/en-us/download
+
+Verificación realizada sobre sintaxis JavaScript, rutas locales, estructura de pestañas y conservación de archivos existentes. No se ejecutaron pruebas visuales en un navegador.
