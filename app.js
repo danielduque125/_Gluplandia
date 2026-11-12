@@ -9,7 +9,7 @@ const tracks = [
   {title:'Haggstrom', artist:'C418', src:'assets/haggstrom.mp3'}
 ];
 let trackIndex = 0;
-let wantsPlayback = true;
+let wantsPlayback = false;
 let playbackAttempt = 0;
 const status = document.getElementById('music-status');
 const trackButtons = [...document.querySelectorAll('[data-track]')];
@@ -104,9 +104,10 @@ document.addEventListener('keydown', event => {
   if (!event.repeat && !['Escape', 'Shift', 'Control', 'Alt', 'Meta'].includes(event.key)) unlockMusic(event);
 });
 renderTrack();
-playMusic();
+status.textContent = 'Música en pausa. Tú eliges cuándo empieza.';
+syncMusic();
 
-let timer;function notify(message){const t=document.getElementById('toast');t.textContent=message;t.classList.add('show');clearTimeout(timer);timer=setTimeout(()=>t.classList.remove('show'),4000)}document.querySelectorAll('.copy').forEach(b=>b.addEventListener('click',async()=>{try{await navigator.clipboard.writeText('play.gluplandia.com');notify('Dirección copiada. Nos vemos en Gluplandia.')}catch{notify('Copia esta dirección para jugar. play.gluplandia.com')}}));const menu=document.getElementById('menu'),nav=document.querySelector('nav');menu.addEventListener('click',()=>{const open=nav.classList.toggle('open');menu.setAttribute('aria-expanded',open);menu.setAttribute('aria-label',open?'Cerrar menú':'Abrir menú')});nav.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{nav.classList.remove('open');menu.setAttribute('aria-expanded','false')}));if(!matchMedia('(prefers-reduced-motion: reduce)').matches){const e=document.querySelector('.embers');for(let n=0;n<24;n++){const p=document.createElement('i');p.style.left=Math.random()*100+'%';p.style.top=60+Math.random()*40+'%';p.style.animationDelay=Math.random()*-12+'s';p.style.animationDuration=8+Math.random()*8+'s';e.appendChild(p)}}
+let timer;function notify(message){const t=document.getElementById('toast');t.textContent=message;t.classList.add('show');clearTimeout(timer);timer=setTimeout(()=>t.classList.remove('show'),4000)}document.querySelectorAll('.copy').forEach(b=>b.addEventListener('click',async()=>{try{await navigator.clipboard.writeText('play.gluplandia.com');notify('Dirección copiada. Guárdala para la apertura de Gluplandia.')}catch{notify('Copia esta dirección para jugar. play.gluplandia.com')}}));const menu=document.getElementById('menu'),nav=document.querySelector('nav');menu.addEventListener('click',()=>{const open=nav.classList.toggle('open');menu.setAttribute('aria-expanded',open);menu.setAttribute('aria-label',open?'Cerrar menú':'Abrir menú')});nav.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{nav.classList.remove('open');menu.setAttribute('aria-expanded','false')}));if(!matchMedia('(prefers-reduced-motion: reduce)').matches){const e=document.querySelector('.embers');for(let n=0;n<24;n++){const p=document.createElement('i');p.style.left=Math.random()*100+'%';p.style.top=60+Math.random()*40+'%';p.style.animationDelay=Math.random()*-12+'s';p.style.animationDuration=8+Math.random()*8+'s';e.appendChild(p)}}
 
 let soundContext;
 
