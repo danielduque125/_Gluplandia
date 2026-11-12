@@ -106,7 +106,8 @@
     classStage.style.setProperty('--class-color', data.color);
     classStage.dataset.class = key;
     classStage.style.setProperty('--class-position', `${data.index * 100 / 3}%`);
-    $('#class-art').setAttribute('aria-label', `Arte conceptual de la clase ${data.name}`);
+    $('#class-portrait').src = `assets/class-${key}.png?v=png-r2`;
+    $('#class-portrait').alt = `Arte conceptual de la clase ${data.name}`;
     $('#class-name').textContent = data.name;
     $('#class-title').textContent = data.title;
     $('#class-description').textContent = data.description;
@@ -184,7 +185,8 @@
     habitatKey = key;
     const scene = $('#habitat-scene');
     scene.style.setProperty('--habitat-position', data.position);
-    scene.setAttribute('aria-label', data.landscape);
+    $('#habitat-portrait').src = `assets/habitat-${key}.png?v=png-r2`;
+    $('#habitat-portrait').alt = data.landscape;
     $('#habitat-title').textContent = data.name;
     $('#bestiary-explorer').style.setProperty('--habitat-color', data.color);
     $('#habitat-panel').setAttribute('aria-labelledby', button.id);

@@ -123,9 +123,9 @@ document.querySelectorAll('[data-skin]').forEach(button => {
  });
 });
 const destinations = {
-  overworld: {image:'assets/overworld.jpg', alt:'Montañas volcánicas del Overworld', label:'EL VIAJE POR LA SUPERFICIE.', title:'Sigue el horizonte.', description:'Busca aldeas entre biomas renovados y descubre las ruinas que interrumpen el paisaje.', tip:'Lleva comida y una cama. Guarda las coordenadas de tu base para encontrar el camino de regreso.'},
-  nether: {image:'assets/nether.png', alt:'Fortaleza del Nether sobre un mar de lava', label:'AL OTRO LADO DEL PORTAL.', title:'Adéntrate en el fuego.', description:'Los paisajes infernales y las fortalezas abren nuevas rutas entre la lava. Cada cruce exige atención.', tip:'Prepara resistencia al fuego y bloques para construir un paso seguro. Anota dónde está tu portal.'},
-  end: {image:'assets/end.png', alt:'Islas suspendidas en el vacío del End', label:'DONDE TERMINA EL SUELO.', title:'Atrévete a cruzar el vacío.', description:'Explora islas suspendidas y busca las estructuras que se ocultan más allá del siguiente borde.', tip:'Lleva bloques y perlas de ender. Si vuelas con élitros, comprueba su durabilidad antes de despegar.'}
+  overworld: {image:'assets/overworld.jpg?v=png-r2', alt:'Montañas volcánicas del Overworld', label:'EL VIAJE POR LA SUPERFICIE.', title:'Sigue el horizonte.', description:'Busca aldeas entre biomas renovados y descubre las ruinas que interrumpen el paisaje.', tip:'Lleva comida y una cama. Guarda las coordenadas de tu base para encontrar el camino de regreso.'},
+  nether: {image:'assets/nether.png?v=png-r2', alt:'Fortaleza del Nether sobre un mar de lava', label:'AL OTRO LADO DEL PORTAL.', title:'Adéntrate en el fuego.', description:'Los paisajes infernales y las fortalezas abren nuevas rutas entre la lava. Cada cruce exige atención.', tip:'Prepara resistencia al fuego y bloques para construir un paso seguro. Anota dónde está tu portal.'},
+  end: {image:'assets/end.png?v=png-r2', alt:'Islas suspendidas en el vacío del End', label:'DONDE TERMINA EL SUELO.', title:'Atrévete a cruzar el vacío.', description:'Explora islas suspendidas y busca las estructuras que se ocultan más allá del siguiente borde.', tip:'Lleva bloques y perlas de ender. Si vuelas con élitros, comprueba su durabilidad antes de despegar.'}
 };
 function chooseDestination(key) {
   const d = destinations[key];
@@ -395,7 +395,7 @@ document.getElementById('dragon-react').addEventListener('click',()=>{
  const stage=document.querySelector('.dragon-section');stage.classList.remove('dragon-awake');void stage.offsetWidth;stage.classList.add('dragon-awake');
  clearTimeout(dragonTimer);dragonTimer=setTimeout(()=>stage.classList.remove('dragon-awake'),900);interfaceTone(true);
 });
-const relics=[{name:'Espada',src:'assets/enchanted-sword.png'},{name:'Cofre',src:'assets/recovery-chest.png'},{name:'Cristal',src:'assets/end-crystal.png'}];
+const relics=[{name:'Espada',src:'assets/enchanted-sword.png?v=png-r2'},{name:'Cofre',src:'assets/recovery-chest.png?v=png-r2'},{name:'Cristal',src:'assets/end-crystal.png?v=png-r2'}];
 const memoryBoard=document.getElementById('memory-board');
 let memoryCards=[],memoryOpen=[],memoryLocked=false,memoryStarted=false,memoryMoves=0,memoryPairs=0,memoryTimer;
 function makeMemoryBoard(started){
@@ -430,9 +430,9 @@ function flipRelic(index){
 document.getElementById('memory-start').addEventListener('click',()=>{makeMemoryBoard(true);document.getElementById('memory-start').textContent='Reiniciar reto';document.getElementById('memory-status').textContent='Elige dos reliquias. Encuentra las tres parejas.';memoryCards[0].button.focus();});
 makeMemoryBoard(false);
 const sampleScenes=[
- {src:'assets/sample-wither-keep.jpg',title:'Wither Keep: El bastión en la cumbre.',text:'Una imponente fortaleza que vigila las llanuras. Sus murallas y salas interiores ocultan desafíos, trampas y botín de alto calibre.',alt:'Fortaleza Wither Keep'},
- {src:'assets/sample-dungeon-plains.jpg',title:'Dungeon Plains: El laberinto bajo tierra.',text:'Pasadizos y criptas subterráneas. Pasillos en penumbra custodiados por enemigos y tesoros sellados.',alt:'Galería subterránea de Dungeon Plains'},
- {src:'assets/sample-cascada-lava.jpg',title:'Cascada de Lava: El santuario de magma.',text:'Cámaras ancestrales talladas en piedra profunda. Una columna vertical de lava ilumina la cúpula resguardando secretos de expediciones pasadas.',alt:'Cámara con cascada de lava'}
+ {src:'assets/sample-wither-keep.jpg?v=png-r2',title:'Wither Keep: El bastión en la cumbre.',text:'Una imponente fortaleza que vigila las llanuras. Sus murallas y salas interiores ocultan desafíos, trampas y botín de alto calibre.',alt:'Fortaleza Wither Keep'},
+ {src:'assets/sample-dungeon-plains.jpg?v=png-r2',title:'Dungeon Plains: El laberinto bajo tierra.',text:'Pasadizos y criptas subterráneas. Pasillos en penumbra custodiados por enemigos y tesoros sellados.',alt:'Galería subterránea de Dungeon Plains'},
+ {src:'assets/sample-cascada-lava.jpg?v=png-r2',title:'Cascada de Lava: El santuario de magma.',text:'Cámaras ancestrales talladas en piedra profunda. Una columna vertical de lava ilumina la cúpula resguardando secretos de expediciones pasadas.',alt:'Cámara con cascada de lava'}
 ];
 document.querySelectorAll('[data-sample]').forEach(b=>b.addEventListener('click',()=>{
  const scene=sampleScenes[Number(b.dataset.sample)];const img=document.getElementById('sample-image');img.src=scene.src;img.alt=scene.alt;
