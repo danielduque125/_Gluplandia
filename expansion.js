@@ -4,22 +4,10 @@
   const $ = (selector, root = document) => root.querySelector(selector);
   const $$ = (selector, root = document) => [...root.querySelectorAll(selector)];
   const root = document.documentElement;
-  let storedMotion;
-  try { storedMotion = localStorage.getItem('glup-motion'); } catch {}
-  let motionOff = storedMotion === 'off' || (storedMotion !== 'on' && matchMedia('(prefers-reduced-motion: reduce)').matches);
-  const motionButton = $('#motion-toggle');
-  function setMotion(off) {
-    motionOff = off;
-    root.dataset.motion = off ? 'off' : 'on';
-    if (motionButton) {
-      motionButton.setAttribute('aria-pressed', String(off));
-      motionButton.setAttribute('aria-label', off ? 'Activar animaciones decorativas' : 'Reducir animaciones decorativas');
-      $('span', motionButton).textContent = off ? 'Animaciones en pausa' : 'Reducir movimiento';
-    }
-    try { localStorage.setItem('glup-motion', off ? 'off' : 'on'); } catch {}
-  }
-  setMotion(motionOff);
-  motionButton?.addEventListener('click', () => setMotion(!motionOff));
+  const motionPreference = matchMedia('(prefers-reduced-motion: reduce)');
+  const syncMotionPreference = () => {root.dataset.motion = motionPreference.matches ? 'off' : 'on';};
+  syncMotionPreference();
+  motionPreference.addEventListener('change', syncMotionPreference);
 
   const header = $('header');
   const scrollLine = $('#reading-progress');

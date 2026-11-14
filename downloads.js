@@ -11,9 +11,11 @@
     $('#step-count').textContent = `${done} de ${checks.length} pasos`;
     $('#setup-progress').max = checks.length;
     $('#setup-progress').value = done;
+    dispatchEvent(new CustomEvent('glup:setup-progress',{detail:{guide:current,done,total:checks.length}}));
   }
   function select(tab, focus = false) {
     if (!tab) return;
+    const previous = current;
     current = tab.dataset.guide;
     tabs.forEach(button => {
       const active = button === tab;
@@ -22,13 +24,15 @@
       $(`#guide-${button.dataset.guide}`).hidden = !active;
     });
     updateProgress();
+    dispatchEvent(new CustomEvent('glup:guidechange',{detail:{guide:current,changed:previous!==current}}));
     if (focus) tab.focus();
   }
-  function guideFromHash() {
+  function guideFromHash(smooth = false) {
     const hash = location.hash.slice(1);
     if (hash === 'bedrock') select($('#tab-bedrock'));
     if (hash === 'java') select($('#tab-official'));
-    if (['bedrock','java'].includes(hash)) $('#instalacion').scrollIntoView({block:'start',behavior:'instant'});
+    if (hash === 'launcher') select($('#tab-gluplandia'));
+    if (['bedrock','java','launcher'].includes(hash)) $('#instalacion').scrollIntoView({block:'start',behavior:smooth===true&&!matchMedia('(prefers-reduced-motion: reduce)').matches?'smooth':'instant'});
   }
   tabs.forEach((tab,index) => {
     tab.addEventListener('click', () => select(tab));
@@ -42,17 +46,27 @@
     });
   });
   document.querySelectorAll('.gl-install-step input').forEach(check=>check.addEventListener('change',updateProgress));
-  addEventListener('hashchange',guideFromHash);
+  addEventListener('hashchange',()=>guideFromHash(true));
+  document.querySelectorAll('a[href="#bedrock"],a[href="#java"],a[href="#launcher"]').forEach(link=>link.addEventListener('click',event=>{
+    if(event.button!==0||event.metaKey||event.ctrlKey||event.shiftKey||event.altKey)return;
+    event.preventDefault();
+    history.replaceState(null,'',link.getAttribute('href'));
+    guideFromHash(true);
+  }));
   guideFromHash(); updateProgress();
   const menu=$('#menu'),nav=$('#download-nav');
   function closeMenu(){nav.classList.remove('open');menu.setAttribute('aria-expanded','false');menu.setAttribute('aria-label','Abrir menú');}
   menu.addEventListener('click',()=>{const open=nav.classList.toggle('open');menu.setAttribute('aria-expanded',String(open));menu.setAttribute('aria-label',open?'Cerrar menú':'Abrir menú');});
   nav.querySelectorAll('a').forEach(link=>link.addEventListener('click',closeMenu));
+  const copyTimers=new WeakMap();
   document.querySelectorAll('[data-copy-host]').forEach(button=>button.addEventListener('click',async()=>{
-    const previous=button.textContent;
-    try {await navigator.clipboard.writeText(address);$('#copy-status').textContent='Dirección copiada.';button.textContent='Dirección copiada';}
+    const label=button.querySelector('[data-copy-label]')||button;
+    const previous=label.dataset.copyOriginalLabel||label.textContent;
+    label.dataset.copyOriginalLabel=previous;
+    clearTimeout(copyTimers.get(button));
+    try {await navigator.clipboard.writeText(address);$('#copy-status').textContent='Dirección copiada.';label.textContent='Dirección copiada';button.classList.add('is-copied');}
     catch {$('#copy-status').textContent=`Copia la dirección manualmente. ${address}`;}
-    setTimeout(()=>{button.textContent=previous;},2200);
+    copyTimers.set(button,setTimeout(()=>{label.textContent=previous;button.classList.remove('is-copied');},2200));
   }));
   const port=Number(config.bedrockPort);
   if(Number.isInteger(port)&&port>0&&port<=65535){document.querySelectorAll('[data-bedrock-port]').forEach(node=>{node.textContent=String(port);});$('.gl-port-context').textContent='Utiliza este puerto en el campo correspondiente de Minecraft Bedrock.';}
