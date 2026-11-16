@@ -1,6 +1,6 @@
 /* Gluplandia arrivals. Every illustration is included as a local PNG. */
 .gl-download-page{--dl-gold:#f9bc72;--dl-teal:#8cddce;background:#100d15;isolation:isolate}
-.gl-download-page:before{content:'';position:fixed;inset:0;z-index:-2;pointer-events:none;background:linear-gradient(#0d0a159c,#110d17c9),url('assets/hero-landscape.png?v=downloads-r3') center/cover;opacity:.43}
+.gl-download-page:before{content:'';position:fixed;inset:0;z-index:-2;pointer-events:none;background:linear-gradient(#0d0a159c,#110d17c9),url('assets/downloads-harbor.png?v=downloads-r3') center/cover;opacity:.43}
 .gl-download-page:after{content:'';position:fixed;inset:0;z-index:-1;pointer-events:none;background:radial-gradient(ellipse at 90% 45%,#b85b2710,transparent 65%)}
 .gl-download-page header{background:linear-gradient(#100b14c9,#100b1470);border-color:#f7d0a51c}
 .gl-download-page header.has-scrolled{background:#120d18e8}

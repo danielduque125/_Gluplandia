@@ -94,7 +94,7 @@
     classStage.style.setProperty('--class-color', data.color);
     classStage.dataset.class = key;
     classStage.style.setProperty('--class-position', `${data.index * 100 / 3}%`);
-    $('#class-portrait').src = `assets/class-${key}.png?v=png-r2`;
+    $('#class-portrait').src = `assets/class-${key}-hd.png?v=final-r6`;
     $('#class-portrait').alt = `Arte conceptual de la clase ${data.name}`;
     $('#class-name').textContent = data.name;
     $('#class-title').textContent = data.title;
